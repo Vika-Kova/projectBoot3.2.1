@@ -5,7 +5,6 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import ru.com.springdemo.projectBoot.model.User;
 
-
 import java.util.List;
 
 @Repository
@@ -26,7 +25,6 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void deleteUser(int id) {
-        User user = entityManager.find(User.class, id);
         entityManager.remove(showUser(id));
     }
 

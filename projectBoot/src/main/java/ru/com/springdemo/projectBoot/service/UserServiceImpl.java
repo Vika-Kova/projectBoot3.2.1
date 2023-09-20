@@ -8,7 +8,6 @@ import ru.com.springdemo.projectBoot.model.User;
 
 import java.util.List;
 
-
 @Service
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
@@ -26,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-  @Override
+    @Override
     public void updateUser(int id, User user) {
         userDao.updateUser(id, user);
     }

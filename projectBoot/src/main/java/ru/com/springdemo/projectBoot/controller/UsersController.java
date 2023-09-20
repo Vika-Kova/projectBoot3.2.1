@@ -1,22 +1,24 @@
 package ru.com.springdemo.projectBoot.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import ru.com.springdemo.projectBoot.dao.UserDao;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.com.springdemo.projectBoot.model.User;
 import ru.com.springdemo.projectBoot.service.UserService;
 
-
 @Controller
-@RequestMapping("/")//url
+@RequestMapping("/")
 public class UsersController {
     private final UserService userService;
 
-    @Autowired
-    public UsersController(UserDao userDao, UserService userService) {
+    // @Autowired
+    public UsersController(UserService userService) {
         this.userService = userService;
     }
 
@@ -30,7 +32,6 @@ public class UsersController {
     public String showUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.showUser(id));// userService.showUser(id));
         return "users/show";
-
     }
 
     @GetMapping("users/new")
